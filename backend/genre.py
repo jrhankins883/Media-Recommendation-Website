@@ -55,6 +55,18 @@ def genres():
     genres = fetch_genres()
     return "<br>".join([f"{genre['id']}: {genre['name']}" for genre in genres])
 
+# Defines a route for fetching movies by genre
+@app.route("/movies/<int:genre_id>")
+def movies(genre_id):
+    movies = fetch_movies_by_genre(genre_id, TMDB_API_KEY)
+    
+    if not movies:
+        return f"No movies found for genre ID: {genre_id}"
+    
+    # Creating a simple HTML response with movie titles
+    movie_titles = "<br>".join([movie["title"] for movie in movies])
+    return f"<h2>Movies in Genre ID {genre_id}:</h2><br>{movie_titles}"
+
 # Main execution block
 if __name__ == "__main__":
     print("Starting Flask app...")
