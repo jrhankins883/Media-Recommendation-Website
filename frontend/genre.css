@@ -1,69 +1,40 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
-    color: #333;
-}
-
-.container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: url('old-frame-4583946_1280 (1).png') center/cover no-repeat fixed;
+    font-family: 'Poppins', sans-serif;
+    color: white;
     text-align: center;
 }
 
-h1 {
-    margin-bottom: 20px;
-    color: #444;
+#genre-dropdown {
+    background-color: black;
+    color: gold;
+    padding: 10px;
+    border: 2px solid gold;
+    font-size: 18px;
+    border-radius: 5px;
+    text-transform: uppercase;
 }
 
-label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 10px;
+.movie-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
 }
 
-#genre-select {
+.movie {
+    width: 150px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.movie img {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(255, 215, 0, 0.5);
 }
 
-button {
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-button:hover {
-    background-color:#0056b3;
-}
-
-#movies-list {
-    margin-top: 20px;
-    text-align: left;
-}
-
-#movies-list ul {
-    list-style: none;
-    padding: 0;
-}
-
-#movies-list li {
-    margin: 5px 0;
-    padding: 10px;
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+.movie:hover {
+    transform: scale(1.1);
 }
