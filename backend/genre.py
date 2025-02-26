@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 from dotenv import load_dotenv
 import os
 import tmdbsimple as tmdb
@@ -51,9 +51,12 @@ def home(): # This function runs when someone visits the specified route
 
 # Define's a route to display genres
 @app.route("/genres")
-def genres():
-    genres = fetch_genres()
-    return "<br>".join([f"{genre['id']}: {genre['name']}" for genre in genres])
+def get_genres():
+    url = f"https://api.themoviedb.org/3/genre/movie/list?api_key={TMDB_API_KEY}&language=en-US"
+    response = requests.get(url)
+    data = response.json()
+    return jsonify(data)  # Ensure this returns the list of genres
+
 
 # Defines a route for fetching movies by genre
 @app.route("/movies/<int:genre_id>")
@@ -61,7 +64,9 @@ def movies(genre_id):
     movies = fetch_movies_by_genre(genre_id, TMDB_API_KEY)
     
     if not movies:
-        return f"No movies found for genre ID: {genre_id}"
+        return jsonify({"error": "No movies found"}), 404
+    
+    return jsonify(movies)
     
     # Creating a simple HTML response with movie titles
     movie_titles = "<br>".join([movie["title"] for movie in movies])

@@ -1,5 +1,6 @@
 body {
     background: url('old-frame-4583946_1280 (1).png') center/cover no-repeat fixed;
+    background-size: cover;
     font-family: 'Poppins', sans-serif;
     color: white;
     text-align: center;
